@@ -59,3 +59,34 @@ for (var i = 0; i < items.length; i++)
 }
 
 dataContainer.appendChild(itemsContainer);
+
+//Razvan's function
+
+function createElement(element, container, attributes, properties) {
+    if (container != null) {
+        var elementContainer = document.createElement(container);
+    }
+
+    var el = document.createElement(element);
+
+    for (var attr in attributes) {
+        el.setAttribute(attr, attributes[attr]);
+    }
+
+    for (var property in properties) {
+        el[property] = properties[property];
+    }
+
+    if (container != null) {
+        elementContainer.appendChild(el);
+        return elementContainer;
+    }
+
+    return el;
+}
+
+// var fileTypeNode = createElement("li", null, {}, {"textContent": fileType["filename"]});
+// var checkbox = createElement("input", "li", {
+//         "type": "checkbox",
+//         "class": "itemCheckbox"
+//     });
