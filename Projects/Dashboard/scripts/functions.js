@@ -7,6 +7,7 @@ function printValue (object, parentElement) {
         var value = object[key];
         var container = document.createElement("div");
         container.className = key;
+
         if (typeof value === "string" || typeof value === "number") // If the value can be printed, do so
         {
             if (requirements.indexOf(key) != -1) // Make sure the value should be printed
@@ -14,10 +15,12 @@ function printValue (object, parentElement) {
                 container.textContent = value
             }
         }
+
         if (typeof value === "object") // If the object contains other objects, call the function again to get to the values
         {
             printValue(value, container)
         }
+        
         parentElement.appendChild(container);
     }
 }
