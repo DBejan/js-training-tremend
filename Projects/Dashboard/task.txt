@@ -1,0 +1,19 @@
+Tema:
+1. Name
+2. Description
+3. FileTypes
+	1. filename
+	2. extension
+	3. distributions
+		1. Name
+		2. Price
+4. collections
+	1. name + un attribute data-col-id = id
+5. tags
+	1. name + un attribute data-tag-id = id
+	2. buton add to tags
+6. parts (parts sunt item-uri)
+	name + un attribute data-item-id = id  
+
+Bonus 1: Refactorizare (functii + comentarii)
+Bonus 2: Stilizare (dupa gust)

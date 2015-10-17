@@ -1,25 +1,4 @@
-function createElement(element, container, attributes, properties) {
-    if (container != null) {
-        var elementContainer = document.createElement(container);
-    }
 
-    var el = document.createElement(element);
-
-    for (var attr in attributes) {
-        el.setAttribute(attr, attributes[attr]);
-    }
-
-    for (var property in properties) {
-        el[property] = properties[property];
-    }
-
-    if (container != null) {
-        elementContainer.appendChild(el);
-        return elementContainer;
-    }
-
-    return el;
-}
 
 var dataContainer = document.querySelector("#data");
 
@@ -47,8 +26,6 @@ for (var i = 0; i < items.length; i++) {
     var nameContainer = document.createElement("li");
     var descriptionContainer = document.createElement("li");
     var fileTypesContainer = document.createElement("li");
-
-    nameContainer.setAttribute("style", "color: red;");
 
     /**
      * innerHtml - only for html content
@@ -91,14 +68,22 @@ for (var i = 0; i < items.length; i++) {
         fileTypesContainer.appendChild(fileTypeContainer);
     }
 
+    var collectionContainer =  document.createElement("li");
+    for (collection in item.collections)
+    {
+        console.log(foo(collections, id));
+    }
+
+    var collectionName
 
 
 
     //append data to item
-    itemDataContainer.appendChild(idContainer);
+    // itemDataContainer.appendChild(idContainer);
     itemDataContainer.appendChild(nameContainer);
     itemDataContainer.appendChild(descriptionContainer);
     itemDataContainer.appendChild(fileTypesContainer);
+    itemDataContainer.appendChild(collectionContainer);
 
 
     var checkboxContainer = document.createElement("li");
