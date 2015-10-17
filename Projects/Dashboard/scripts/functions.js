@@ -10,7 +10,10 @@ function getValue (value, property) {
             // don't use the global var here;
         }
     };
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/checkoutExercise
     if (typeof value === "object")
     {
         for (var prop in value)
