@@ -1,59 +1,44 @@
-function getValue (value, property) {
-    if (typeof value === "string" || typeof value === "number")
+/*
+ * Search an array of objects and return the value for name, for a specific id
+ * dataSet [array] = array of objects, each conaining id and name
+ * id [str] = the id of the desiered value
+*/
+function getDataById (dataSet, id) 
+{
+    for (object in dataSet)
     {
-        if (requirements.indexOf(property) != -1)
+        for (data in dataSet[object])
         {
-            var label = document.createElement("div");
-            label.className = property;
-    		label.textContent = value;
-            itemDataContainer.appendChild(label);
-            // don't use the global var here;
-        }
-    };
-
-    if (typeof value === "object")
-    {
-        for (var prop in value)
-        {
-             getValue (value[prop], prop);
-        }
-    };
-}
-
-function foo (dataSet, data) {
-    // ne uitam in date, cautam dupa id, intoarcem valoarea
-    for (item in dataSet)
-    {
-        for (value in dataSet[item])
-        {
-            if (dataSet[item][value] == data)
+            if (dataSet[object][data] == id)
             {
-                return dataSet[item][value];
+                return dataSet[object]["name"];
             }
 
         }
     }
 }
 
-function createElement(element, container, attributes, properties) {
-    if (container != null) {
-        var elementContainer = document.createElement(container);
-    }
 
+/*
+ * Razvan's function (edited for eficiency)
+ * Creates an element in the document with the given atributes and properties
+ * element [str] = element type
+ * attributes [obj] = list of atributes containing type as key and attribute as value
+ * properties [obj] = list of properties containing type as key and property as value
+ * 
+*/
+function createElement(element, attributes, properties) {
     var el = document.createElement(element);
 
-    for (var attr in attributes) {
+    for (var attr in attributes) 
+    {
         el.setAttribute(attr, attributes[attr]);
     }
 
-    for (var property in properties) {
+    for (var property in properties) 
+    {
         el[property] = properties[property];
     }
-
-    if (container != null) {
-        elementContainer.appendChild(el);
-        return elementContainer;
-    }
-
+    
     return el;
 }
