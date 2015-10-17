@@ -1,4 +1,4 @@
-requirements = ["name", "description", "filename", "extension", "price"];
+requirements = ["name", "details", "description", "filesTypes", "filename", "extension", "distributions", "price"];
 
 var dataContainer = document.querySelector("#data");
 
@@ -17,10 +17,10 @@ mainCheckbox.addEventListener("change", function() {
 
 dataContainer.appendChild(mainCheckbox);
 
+
 for (var i = 0; i < items.length; i++) 
 {
     var itemDataContainer = document.createElement("div");
-    
     var checkboxContainer = document.createElement("div");
     var checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
@@ -31,42 +31,11 @@ for (var i = 0; i < items.length; i++)
     var itemContainer = document.createElement("div");
 
     var item = items[i];
-    getValue(item);
 
+    printValue(item, itemDataContainer);
 
     itemContainer.appendChild(itemDataContainer);
     itemsContainer.appendChild(itemContainer);
 }
 
 dataContainer.appendChild(itemsContainer);
-
-//Razvan's function
-
-function createElement(element, container, attributes, properties) {
-    if (container != null) {
-        var elementContainer = document.createElement(container);
-    }
-
-    var el = document.createElement(element);
-
-    for (var attr in attributes) {
-        el.setAttribute(attr, attributes[attr]);
-    }
-
-    for (var property in properties) {
-        el[property] = properties[property];
-    }
-
-    if (container != null) {
-        elementContainer.appendChild(el);
-        return elementContainer;
-    }
-
-    return el;
-}
-
-// var fileTypeNode = createElement("li", null, {}, {"textContent": fileType["filename"]});
-// var checkbox = createElement("input", "li", {
-//         "type": "checkbox",
-//         "class": "itemCheckbox"
-//     });
