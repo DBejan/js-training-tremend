@@ -1,17 +1,45 @@
 /*
+ * Return an element with the collection name, based on the id
+ * collectionId [str] = the id of the desiered collection
+*/
+function printCollectionName(collectionId)
+{
+    return createElement("span", {"data-col-id": collectionId}, {"textContent": getDataById(collections, collectionId), "className": "itemCollections itemCollection"});
+}
+
+
+/*
+ * Return an element with the tag name, based on the id
+ * tagId [str] = the id of the desiered tag
+*/
+function printTagName(tagId)
+{
+    return createElement("span", {"data-tag-id": tagId}, {"textContent": getDataById(tags, tagId), "className": "itemTags itemTag"});
+}
+
+
+/*
+ * Return an element with the part name, based on the id
+ * partId [str] = the id of the desiered part
+*/
+function printPartName(partId)
+{
+    return createElement("span", {"data-item-id": partId}, {"textContent": getDataById(items, partId), "className": "itemParts itemPart"});    // TODO: Debug
+}
+
+
+/*
  * Search an array of objects and return the value for name, for a specific id
  * dataSet [array] = array of objects, each conaining id and name
  * id [str] = the id of the desiered value
 */
 function getDataById (dataSet, id) 
 {
-    // console.log(dataSet);
-    // console.log(id);
     for (object in dataSet)
     {
         for (data in dataSet[object])
         {
-            if (dataSet[object][data] == id)
+            if (data == "id")
             {
                 return dataSet[object]["name"];
             }

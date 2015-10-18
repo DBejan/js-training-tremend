@@ -89,7 +89,7 @@ for (i in items)
     for (collection in item.collections)
     {
         var collectionId = item.collections[collection];
-        var collectionName = createElement("span", {"data-col-id": collectionId}, {"textContent": getDataById(collections, collectionId), "className": "itemCollections itemCollection"});
+        var collectionName = printCollectionName(collectionId);
         collectionContainer.appendChild(collectionName);
     };
     itemDataContainer.appendChild(collectionContainer); // Append collection details
@@ -100,10 +100,14 @@ for (i in items)
     for (tag in item.tags)
     {
         var tagId = item.tags[tag];
-        var tagName = createElement("span", {"data-tag-id": tagId}, {"textContent": getDataById(tags, tagId), "className": "itemTags itemTag"});
+        var tagName = printTagName(tagId);
         tagsContainer.appendChild(tagName);
     };
-    // TODO: Add "Add tag" button
+    var addTagButton = document.createElement("button");
+    var buttonText = document.createTextNode("Add to tags");
+    addTagButton.appendChild(buttonText);
+    tagsContainer.appendChild(addTagButton);
+    
     itemDataContainer.appendChild(tagsContainer); // Append tags details
 
     // Add parts details
@@ -112,7 +116,7 @@ for (i in items)
     for (part in item.parts)
     {
         var partId = item.parts[part];
-        var partName = createElement("span", {"data-item-id": partId}, {"textContent": getDataById(items, partId), "className": "itemParts itemPart"});    // TODO: Debug
+        var partName = printPartName(partId);
         partsContainer.appendChild(partName);
     };
     itemDataContainer.appendChild(partsContainer); // Append parts details
