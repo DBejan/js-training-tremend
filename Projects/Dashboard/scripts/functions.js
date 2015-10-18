@@ -5,6 +5,8 @@
 */
 function getDataById (dataSet, id) 
 {
+    // console.log(dataSet);
+    // console.log(id);
     for (object in dataSet)
     {
         for (data in dataSet[object])
@@ -39,6 +41,6 @@ function createElement(element, attributes, properties) {
     {
         el[property] = properties[property];
     }
-    
+
     return el;
 }
