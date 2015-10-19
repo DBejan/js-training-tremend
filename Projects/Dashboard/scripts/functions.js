@@ -52,3 +52,12 @@ function extractObjectFromArrayByProperty(arr, property, value) {
 
     return null;
 }
+
+function hideshow() {
+  this.style.display = 'none';
+}  
+
+function addTag(tag)
+{
+    
+}

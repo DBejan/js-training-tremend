@@ -61,13 +61,18 @@ function renderTags(tags, parentElement, button) {
     renderTag(tags[i], tagsContainer);
   }
 
+  var addTagsOptions = createElement("div", null, {"class": "tagsOptions"})
   if (button) {
-    var buttonElement = createElement("button", "li", {}, {textContent: "Add another tag"});
-    tagsContainer.appendChild(buttonElement);
+    var buttonElement = createElement("button", null, {"class": "tagButton"}, {textContent: "Add another tag"}, {'click': hideshow});
+    addTagsOptions.appendChild(buttonElement);
+    var addTagInput = createElement("input", null, {"class": "addTagInput"});
+    var saveTagButton = createElement("button", null, {"class": "saveTagButton"}, {}, {"click": addtag(addTagInput)})
   }
-
+  tagsContainer.appendChild(addTagsOptions);
   parentElement.appendChild(tagsContainer);
 }
+
+
 
 function renderParts(parts, parentElement) {
     var partsContainer = document.createElement("ul");
