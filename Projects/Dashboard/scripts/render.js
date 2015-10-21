@@ -60,16 +60,25 @@ function renderTags(tags, parentElement, button) {
   for (var i = 0; i < tags.length; i++) {
     renderTag(tags[i], tagsContainer);
   }
-
-  var addTagsOptions = createElement("div", null, {"class": "tagsOptions"})
   if (button) {
-    var buttonElement = createElement("button", null, {"class": "tagButton"}, {textContent: "Add another tag"}, {'click': hideshow});
-    addTagsOptions.appendChild(buttonElement);
-    var addTagInput = createElement("input", null, {"class": "addTagInput"});
-    var saveTagButton = createElement("button", null, {"class": "saveTagButton"}, {}, {"click": addtag(addTagInput)})
+    renderAddTagOption(tagsContainer)
   }
-  tagsContainer.appendChild(addTagsOptions);
   parentElement.appendChild(tagsContainer);
+}
+
+
+
+function renderAddTagOption(tagsContainer) {
+  var addTagsOptions = createElement("div", null, {"class": "tagsOptions"})
+
+  var addTagInput = createElement("input", null, {"class": "addTagInput", "style": "display: none"});
+  addTagsOptions.appendChild(addTagInput);
+  var saveTagButton = createElement("button", null, {"id": "saveTagButton", "class": "saveTagButton", "style": "display: none"}, {textContent: "Save"}, {"click": function() {saveTag(this, addTagInput, addTagButton)}})
+  addTagsOptions.appendChild(saveTagButton);
+  var addTagButton = createElement("button", null, {"class": "tagButton"}, {textContent: "Add another tag"}, {"click": function(){addtag(this, addTagInput, saveTagButton)}});
+  addTagsOptions.appendChild(addTagButton);
+
+  tagsContainer.appendChild(addTagsOptions);  
 }
 
 

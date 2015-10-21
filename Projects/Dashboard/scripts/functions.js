@@ -53,11 +53,44 @@ function extractObjectFromArrayByProperty(arr, property, value) {
     return null;
 }
 
-function hideshow() {
-  this.style.display = 'none';
+function hideshow(id, action) {
+    if (action == "hide") 
+    {
+        id.style.display = "none";
+    } else {
+        if (action == "show")
+        {
+            id.style.display = "block"
+        }
+    }
 }  
 
-function addTag(tag)
+function addtag(id, input, button)
 {
+    id.style.display = "none"
+    hideshow(input, "show")
+    hideshow(button, "show")
+}
+
+function saveTag(id, input, button)
+{
+    submitTag(input)
+    hideshow(input, "hide");
+    hideshow(id, "hide")
+    // show new tag
+    hideshow(button, "show");
+}
+
+function submitTag(input)
+{
+    value = input.value
+    // look in tags
+    // if value in there, return value
+    var found =  extractObjectFromArrayByProperty(tags, "name", value);
+    if (found != null) {
+        return found.value;
+    } else {
+        tags.push({"id": tags.length+1, "name": value})
+    }
     
 }
