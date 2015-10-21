@@ -43,6 +43,14 @@ function getPart(id) {
     return extractObjectFromArrayByProperty(items, 'id', id);
 }
 
+function extractObjectFromArrayByPropertyFilter(arr, property, value) {
+	return arr.filter(function (item) {
+		return item[property] == value;
+	});
+}
+
+console.log(extractObjectFromArrayByPropertyFilter(tags, 'id', 2));
+
 function extractObjectFromArrayByProperty(arr, property, value) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i][property] == value) {
@@ -81,6 +89,17 @@ function saveTag(id, input, button)
     hideshow(button, "show");
 }
 
+function getMaxTag() 
+{	
+	var max = -1;
+	return tags.reduce(function (prev, current) {
+		if (current.id > max) {
+			max = current.id;
+		}
+		return max;
+	});
+}
+
 function submitTag(input)
 {
     value = input.value
@@ -90,7 +109,7 @@ function submitTag(input)
     if (found != null) {
         return found.value;
     } else {
-        tags.push({"id": tags.length+1, "name": value})
+        tags.push({"id": getMaxTag()+1, "name": value})
     }
     
 }
